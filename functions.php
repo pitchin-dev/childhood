@@ -30,5 +30,6 @@ function filter_nav_menu_link_attributes($atts, $item, $args) {
 }
 
 add_theme_support('custom-logo');
+add_theme_support('post-thumbnails');
 
 ?>
