@@ -9,6 +9,9 @@ function childhood_styles() {
 
 function childhood_scripts() {
     wp_enqueue_script('childhood-scripts', get_template_directory_uri() . '/assets/js/main.min.js', array('jquery'), null, true);
+    wp_deregister_script('jquery');
+    wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js');
+    wp_enqueue_script('jquery');
 }
 
 add_filter('nav_menu_link_attributes', 'filter_nav_menu_link_attributes', 10, 3);
@@ -31,5 +34,15 @@ function filter_nav_menu_link_attributes($atts, $item, $args) {
 
 add_theme_support('custom-logo');
 add_theme_support('post-thumbnails');
+
+function my_acf_google_map_api( $api ){
+	
+	$api['key'] = 'AIzaSyDionQAkUPl0kmgDe215JmC_bsbSOMwd6U'; // Ваш ключ Google API
+	
+	return $api;
+	
+}
+
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
 ?>
